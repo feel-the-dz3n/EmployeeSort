@@ -8,6 +8,12 @@ import java.util.HashMap;
 public class EmployeeService {
     public HashMap<YearMonth, Employee> sortByBirthday(
             Collection<Employee> employees,
+            Integer monthCount) {
+        return sortByBirthday(employees, monthCount, LocalDate.now());
+    }
+
+    public HashMap<YearMonth, Employee> sortByBirthday(
+            Collection<Employee> employees,
             Integer monthCount,
             LocalDate relativeDate) {
         HashMap<YearMonth, Employee> map = new HashMap<>();
