@@ -12,7 +12,7 @@ public class Employee {
         this.birthday = birthday;
     }
 
-    public int getAge() {
-        return Period.between(birthday, LocalDate.now()).getYears();
+    public int getAge(LocalDate relativeDate) {
+        return Period.between(birthday, relativeDate).getYears();
     }
 }
