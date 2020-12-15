@@ -25,6 +25,14 @@ public class Employee {
     }
 
     public LocalDate getNextBirthday(LocalDate relativeDate) {
-        return birthday; // FIXME
+        var birthday = LocalDate.of(
+                relativeDate.getYear(),
+                this.birthday.getMonth(),
+                this.birthday.getDayOfMonth());
+
+        if (Period.between(birthday, relativeDate).getDays() < 0)
+            birthday.plusYears(1);
+
+        return birthday;
     }
 }
