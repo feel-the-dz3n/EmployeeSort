@@ -19,4 +19,8 @@ public class Employee {
     public int getAge(LocalDate relativeDate) {
         return Period.between(birthday, relativeDate).getYears();
     }
+
+    public LocalDate getNextBirthday() {
+        return birthday; // FIXME
+    }
 }
