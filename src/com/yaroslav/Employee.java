@@ -30,8 +30,8 @@ public class Employee {
                 this.birthday.getMonth(),
                 this.birthday.getDayOfMonth());
 
-        if (Period.between(birthday, relativeDate).getDays() < 0)
-            birthday.plusYears(1);
+        if (relativeDate.compareTo(birthday) > 0)
+            birthday = birthday.plusYears(1);
 
         return birthday;
     }
