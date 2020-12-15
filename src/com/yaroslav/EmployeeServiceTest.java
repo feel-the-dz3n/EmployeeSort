@@ -26,10 +26,10 @@ class EmployeeServiceTest {
     @org.junit.jupiter.api.Test
     void sort__Test1() {
         var sort1 = svc.sortByBirthday(employees, 0, relativeDate);
-        var sort2 = svc.sortByBirthday(employees, 1, relativeDate);
-        var sort3 = svc.sortByBirthday(employees, 2, relativeDate);
 
         assertEquals(1, sort1.size());
-        assertTrue(sort1.values().contains(e1));
+        var hashset1 = sort1.values().iterator().next();
+        assertTrue(hashset1.contains(e1));
+        assertTrue(hashset1.contains(e2));
     }
 }
