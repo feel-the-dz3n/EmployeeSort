@@ -21,6 +21,10 @@ public class Employee {
     }
 
     public LocalDate getNextBirthday() {
+        return getNextBirthday(LocalDate.now());
+    }
+
+    public LocalDate getNextBirthday(LocalDate relativeDate) {
         return birthday; // FIXME
     }
 }
