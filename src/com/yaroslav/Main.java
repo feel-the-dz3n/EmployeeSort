@@ -3,10 +3,20 @@ package com.yaroslav;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
 public class Main {
+    static List<Employee> employees = List.of(
+            new Employee("Yaroslav Kibysh", LocalDate.of(2002, 01, 15)),
+            new Employee("Pavlo Kavun", LocalDate.of(2002, 02, 28)),
+            new Employee("Sergey Perevertkin", LocalDate.of(2000, 02, 2)),
+            new Employee("Vasya Pupkin", LocalDate.of(1998, 12, 16)),
+            new Employee("Viktor Popov", LocalDate.of(1994, 01, 5)),
+            new Employee("Vitaliy Petrov", LocalDate.of(1998, 12, 24))
+    );
+
     public static String toPluralForm(int n, String one, String few, String many) {
         String word;
         int nMod = Math.abs(n);
@@ -33,15 +43,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        List<Employee> employees = List.of(
-                new Employee("Yaroslav Kibysh", LocalDate.of(2002, 01, 15)),
-                new Employee("Pavlo Kavun", LocalDate.of(2002, 02, 28)),
-                new Employee("Sergey Perevertkin", LocalDate.of(2000, 02, 2)),
-                new Employee("Vasya Pupkin", LocalDate.of(1998, 12, 16)),
-                new Employee("Viktor Popov", LocalDate.of(1994, 01, 5)),
-                new Employee("Vitaliy Petrov", LocalDate.of(1998, 12, 24))
-        );
-
         var relativeDate = LocalDate.of(2020, 12, 15);
         var svc = new EmployeeService();
 
@@ -50,6 +51,10 @@ public class Main {
                 2,
                 relativeDate);
 
+        printCelebrantsMap(celebrantsMap);
+    }
+
+    public static void printCelebrantsMap(HashMap<YearMonth, HashSet<Employee>> celebrantsMap) {
         // We're about to iterate through all keys (YearMonth 'es)
         var iterator = celebrantsMap.keySet().iterator();
 
