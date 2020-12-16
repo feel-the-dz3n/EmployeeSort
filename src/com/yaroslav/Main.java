@@ -1,6 +1,7 @@
 package com.yaroslav;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.YearMonth;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -30,13 +31,44 @@ public class Main {
         return n + " " + word;
     }
 
+    public static String getMonthName(Month month) {
+        switch (month) {
+            case JANUARY:
+                return "Январь";
+            case FEBRUARY:
+                return "Ферваль";
+            case MARCH:
+                return "Март";
+            case APRIL:
+                return "Апрель";
+            case MAY:
+                return "Май";
+            case JUNE:
+                return "Июнь";
+            case JULY:
+                return "Июль";
+            case AUGUST:
+                return "Август";
+            case SEPTEMBER:
+                return "Сентябрь";
+            case OCTOBER:
+                return "Октябрь";
+            case NOVEMBER:
+                return "Ноябрь";
+            case DECEMBER:
+                return "Декабрь";
+            default:
+                return month.toString();
+        }
+    }
+
     public static void printYearMonthRow(YearMonth ym) {
-        System.out.println(ym); // TODO: correct date formatting
+        System.out.printf("%s %d\n", getMonthName(ym.getMonth()), ym.getYear());
     }
 
     public static void printEmployeeRow(int n, Employee e) {
         System.out.printf(
-                "(%d) - %s (%s)\n",
+                "(%02d) - %s (%s)\n",
                 n,
                 e.name,
                 toPluralForm(e.getAge() + 1, "год", "года", "лет"));
