@@ -74,7 +74,7 @@ public class Main {
                             "jdbc:postgresql://127.0.0.1:5432/",
                             "postgres",
                             "123456"))
-                    .getEmployees();
+                    .fetchEmployees();
         } catch (Exception e) {
             e.printStackTrace();
         }

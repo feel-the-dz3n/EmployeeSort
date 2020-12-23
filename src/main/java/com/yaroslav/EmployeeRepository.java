@@ -12,7 +12,7 @@ public class EmployeeRepository {
         this.database = database;
     }
 
-    public Collection<Employee> getEmployees() throws Exception {
+    public Collection<Employee> fetchEmployees() throws Exception {
         HashSet<Employee> employees = new HashSet<>();
         var conn = database.connect();
 
