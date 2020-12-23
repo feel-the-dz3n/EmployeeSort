@@ -2,36 +2,21 @@ package com.yaroslav;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Collection;
 import java.util.HashSet;
 
-public class Database {
-    // JDBC driver name and database URL
-    static final String JDBC_DRIVER = "org.postgresql.Driver";
-    static final String DB_URL = "jdbc:postgresql://127.0.0.1:5432/";
+public class EmployeeRepository {
+    private DatabaseInformation database;
 
-    //  Database credentials
-    static final String USER = "postgres";
-    static final String PASS = "123456";
-
-    Connection conn;
-    Statement stmt;
-
-    private void connect() throws Exception {
-        Class.forName(JDBC_DRIVER);
-        conn = DriverManager.getConnection(DB_URL, USER, PASS);
-    }
-
-    private void disconnect() throws SQLException {
-        conn.close();
+    public EmployeeRepository(DatabaseInformation database) {
+        this.database = database;
     }
 
     public Collection<Employee> getEmployees() throws Exception {
         HashSet<Employee> employees = new HashSet<>();
-        connect();
+        var conn = database.connect();
 
-        stmt = conn.createStatement();
+        var stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM public.employees");
 
         while (rs.next()) {
@@ -43,7 +28,7 @@ public class Database {
         }
 
         stmt.close();
-        disconnect();
+        conn.close();
 
         return employees;
     }

@@ -68,7 +68,13 @@ public class Main {
         Collection<Employee> employees = null;
 
         try {
-            employees = new Database().getEmployees();
+            employees = new EmployeeRepository(
+                    new DatabaseInformation(
+                            "org.postgresql.Driver",
+                            "jdbc:postgresql://127.0.0.1:5432/",
+                            "postgres",
+                            "123456"))
+                    .getEmployees();
         } catch (Exception e) {
             e.printStackTrace();
         }
